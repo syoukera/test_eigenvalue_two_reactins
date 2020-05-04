@@ -1,0 +1,7 @@
+CONP
+PRES  1.0   
+TEMP  1000
+TIME  1.0
+DELT  1.0E-12
+REAC  S1   1.0 
+END

@@ -1,5 +1,6 @@
 link/*
 output/*
+data/*
 *.o
 ckinterpe
 senkine
