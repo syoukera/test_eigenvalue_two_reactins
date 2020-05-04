@@ -428,13 +428,18 @@ C
       CHARACTER KSYM(*)*(*)
 C
       COMMON /RES1/ P
+      COMMON/DDA001/NPD,NTEMP,
+     *   LML,LMU,LMXORD,LMTYPE,
+     *   LNST,LNRE,LNJE,LETF,LCTF,LIPVT,LWM
 C
       DATA ISEN /5*0/, INFO /15*0/, DTLIM / 400. /, NOSAV /1/
 C
 C       SET OUTPUT FILE FOR USER COMFORMATION
 C
       LDTS = 11
+      LJAC = 12
       OPEN (LDTS, FORM='FORMATTED', FILE = 'output/skout_datasheet')
+      OPEN (LJAC, FORM='FORMATTED', FILE = 'output/jacobian')
 C
 C       SET PARAMETERS FOR DASAC
 C
@@ -553,6 +558,7 @@ C
      1                P, PATM, RPAR, TIM, XMOL, Z)
          TLASTP = TIM
          TPRINT = TPRINT + DTOUT
+         WRITE(LJAC, *) TIM, (ELWRK(LWM+NPD-2+I), I = 1, NSYS**2)
 C
 C       PRINT    Sensitivity coefficient.
 C
